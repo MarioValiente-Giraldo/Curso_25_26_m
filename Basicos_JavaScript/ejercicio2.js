@@ -12,8 +12,6 @@ const numeroSacados = [];
         5: 0,
         6: 0
     };
-const numeroTiradas = 0;
-
 
 //<--------------Declarar función tirarDado-------------->
 function tirarDado(){
@@ -23,10 +21,25 @@ function tirarDado(){
 }
 
 //<--------------Declarar función simular-------------->
-function simular(){
+function simular(x=0){
+    for(let i=0; i<x; i++){
+        tirarDado();
+    }
+
+    for(let j=0; j<numeroSacados.length; j++){
+        numerosRepetidos[numeroSacados[j]] += 1;
+    }
     
+    let numeroMasRepetido = 0;
+    for(const numero in numerosRepetidos){
+        if(numerosRepetidos[numero] > numeroMasRepetido){
+            numeroMasRepetido = numero;
+        }
+    }
+
+    return numeroMasRepetido;
+
 }
-
-
-
 console.log(tirarDado());
+
+console.log("El número que más ha salido es el: " + simular(10));
