@@ -14,9 +14,12 @@
 const cuentas = [];
 
 //<--------------Crear un numero de cuenta-------------->
-function crearNumeroCuenta(){
-    let numeroCuenta = Math.random()*100000000000000000000000 +1;
-    return Math.floor(numeroCuenta);
+function crearNumeroCuenta() {
+    let numeroCuenta = "";
+    for (let i = 0; i < 24; i++) {
+        numeroCuenta += Math.floor(Math.random() * 10);
+    }
+    return numeroCuenta;
 }
 //<--------------Crear Cuenta bancaria-------------->
 function crearCuenta(titular, saldo=0){
@@ -31,23 +34,22 @@ function crearCuenta(titular, saldo=0){
 //<--------------Depositar dinero en una cuenta-------------->
 function depositarDinero(numeroCuenta, cantidad){
     for(const cuenta of cuentas){
-        if(cuenta.numeroCuenta === numeroCuenta && cantidad>0){
-            cuenta.saldo+=cantidad;
+        if(cuenta.numeroCuenta === numeroCuenta && cantidad > 0){
+            cuenta.saldo += cantidad;
             return cuenta.saldo;
-        }else{
-            return "Cuenta no encontrada o cantidad negativa";
         }
     }
+    return "Cuenta no encontrada o cantidad negativa";
 }
 //<--------------Retirar dinero en una cuenta-------------->
-function retirarDinero(numeroCuenta,cantidad){
+function retirarDinero(numeroCuenta, cantidad){
     for(const cuenta of cuentas){
-        if(cuenta.numeroCuenta === numeroCuenta && cantidad>0 && cuenta.saldo-cantidad>=0){
-            cuenta.saldo-=cantidad;
-        }else{
-            return "Cuenta no encontrada, cantidad negativa o saldo insuficiente";
+        if(cuenta.numeroCuenta === numeroCuenta && cantidad > 0 && cuenta.saldo - cantidad >= 0){
+            cuenta.saldo -= cantidad;
+            return cuenta.saldo;
         }
     }
+    return "Cuenta no encontrada, cantidad negativa o saldo insuficiente";
 }
 
 //<--------------Consultar el saldo de una cuenta-------------->
@@ -55,11 +57,46 @@ function consultarSaldo(numeroCuenta){
     for(const cuenta of cuentas){
         if(cuenta.numeroCuenta === numeroCuenta){
             return cuenta.saldo;
-        }else{
-            return "Cuenta no encontrada";
-        }               
+        }
+    }
+    return "Cuenta no encontrada";
+}
+//<--------------Transferir dinero entre distintas cuentas-------------->
+function transferirDinero(numeroCuentaOrigen, numeroCuentaDestino, cantidad){
+    if(cantidad > 0){
+        let cuentaOrigen = null;
+        let cuentaDestino = null;
+        for(const cuenta of cuentas){
+            if(cuenta.numeroCuenta === numeroCuentaOrigen){
+                cuentaOrigen = cuenta;
+            }
+            if(cuenta.numeroCuenta === numeroCuentaDestino){
+                cuentaDestino = cuenta;
+            }
+        }
+        if(cuentaOrigen && cuentaDestino && cuentaOrigen.saldo - cantidad >= 0){
+            cuentaOrigen.saldo -= cantidad;
+            cuentaDestino.saldo += cantidad;
+            return "Transferencia realizada";
+        }
+        return "Error en la transferencia";
+    }
+    return "Cantidad negativa";
+}
+
+function buscarCuentaPorTitular(titular){
+    for(const cuenta of cuentas){
+        if(cuenta.titular === titular){
+            return cuenta;
+        }
+    }
+    return "Cuenta no encontrada";
+}
+//<--------------Mostrar cuentas-------------->
+function mostrarCuentas(){
+    for(const cuenta of cuentas){
+        console.log(cuenta.titular,"----", cuenta.numeroCuenta);
     }
 }
-function transferirDinero(numeroCuentaOrigen, numeroCuentaDestino, cantidad){
-    
-}
+
+
