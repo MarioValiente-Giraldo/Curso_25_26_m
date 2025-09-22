@@ -14,6 +14,10 @@ const numeroSacados = [];
     };
 
 //<--------------Declarar función tirarDado-------------->
+/**
+ * 
+ * @returns {number} - número aleatorio entre 1 y 6
+ */
 function tirarDado(){
     let numero = Math.floor(Math.random() * 6 ) + 1;
     numeroSacados.push(numero)
@@ -21,6 +25,11 @@ function tirarDado(){
 }
 
 //<--------------Declarar función simular-------------->
+/**
+ * 
+ * @param {number} x - número de veces que se tira el dado 
+ * @returns - número que más ha salido
+ */
 function simular(x=0){
     for(let i=0; i<x; i++){
         tirarDado();
