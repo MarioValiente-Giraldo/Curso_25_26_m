@@ -120,8 +120,9 @@ const nombresFormalizadosTest = ["mARio VALIENTE", " CAROlina coLLado"]
  */
 function nombresFormalizados(nombres) {
   return nombres.map((nombre) => nombre.toLowerCase().split(" ")
-      .map(palabra => palabra.charAt(0).toUpperCase() + palabra.slice(1))
-      .join(" ") 
+    .filter(palabra=>palabra !== "")
+    .map(palabra => palabra.charAt(0).toUpperCase() + palabra.slice(1))
+    .join(" ") 
   );
 }
 
