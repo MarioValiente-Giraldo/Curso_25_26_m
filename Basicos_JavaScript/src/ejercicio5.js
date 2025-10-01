@@ -110,7 +110,7 @@ productos.reduce((total,producto)=> total+ (producto.precio*producto.stock),0);
 // 3.- Filtrar los productos que pertenecen a la categoría 'Tecnología' y tienen un precio mayor a 500.
 productos.reduce((acc,producto)=> producto.categoria === "Tecnología" && producto.precio>500?[...acc,producto] : acc,[]);
 // 4.- Crear un nuevo array de productos aplicando un descuento del 10% a todos los productos de la categoría 'Ropa'.
-productos.map(producto => producto.categoria==="Ropa"? {...producto,precio: producto.precio * 0.9}:producto);
+productos.map(producto => producto.categoria==="Ropa"? {...producto, precio: producto.precio * 0.9}:producto);
 
 
 
