@@ -12,7 +12,7 @@ export const productos = [
       },
     },
     especificaciones: {
-      ram: "16GB",
+      ram: 16,
       cpu: "Intel i7",
     },
   },
@@ -29,7 +29,7 @@ export const productos = [
       },
     },
     especificaciones: {
-      ram: "8GB",
+      ram: 8,
       cpu: "Exynos 2200",
     },
   },
@@ -46,7 +46,7 @@ export const productos = [
       },
     },
     especificaciones: {
-      ram: "6GB",
+      ram: 6,
       cpu: "Apple M1",
     },
   },
@@ -63,8 +63,8 @@ export const productos = [
       },
     },
     especificaciones: {
-      ram: "N/A",
-      cpu: "N/A",
+      ram: 1,
+      cpu: "Display Controller",
     },
   },
   {
@@ -80,7 +80,7 @@ export const productos = [
       },
     },
     especificaciones: {
-      ram: "2GB",
+      ram: 2,
       cpu: "ARM Cortex",
     },
   },
@@ -97,7 +97,7 @@ export const productos = [
       },
     },
     especificaciones: {
-      ram: "16GB",
+      ram: 16,
       cpu: "AMD Ryzen",
     },
   },
@@ -114,8 +114,8 @@ export const productos = [
       },
     },
     especificaciones: {
-      ram: "N/A",
-      cpu: "N/A",
+      ram: 0.5,
+      cpu: "Audio Processor",
     },
   },
   {
@@ -131,7 +131,7 @@ export const productos = [
       },
     },
     especificaciones: {
-      ram: "2GB",
+      ram: 2,
       cpu: "Snapdragon Wear",
     },
   },
@@ -148,7 +148,7 @@ export const productos = [
       },
     },
     especificaciones: {
-      ram: "4GB",
+      ram: 4,
       cpu: "Expeed",
     },
   },
@@ -165,7 +165,7 @@ export const productos = [
       },
     },
     especificaciones: {
-      ram: "512MB",
+      ram: 0.512,
       cpu: "Dual-Core ARM",
     },
   }

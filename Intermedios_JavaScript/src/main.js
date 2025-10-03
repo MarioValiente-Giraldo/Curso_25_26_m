@@ -1,4 +1,5 @@
 import { productos } from "./data/data";
+import { maxRam } from "./helpers/maxRam";
 import { newData } from "./helpers/myFunction";
 
 
@@ -8,6 +9,6 @@ import { newData } from "./helpers/myFunction";
     .map(newData());
 
 
-console.log(newDataArray(productos))
+console.log(maxRam(productos))
 
 //En helpers crear una funcion que se llame maxRam, que al pasarle un array de productos, esta me de el nombre del producto con mayor ram
