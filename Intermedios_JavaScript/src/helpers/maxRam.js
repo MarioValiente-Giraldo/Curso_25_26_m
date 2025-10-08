@@ -7,5 +7,4 @@ export const maxRam = (arrayProducts) => {
         return producto.ram > maximo.ram ? producto:maximo;
     });
     return nombre;
-    
 }
