@@ -61,5 +61,109 @@ export const addTarea=(nombreTarea)=>{
 
 //Crear una funciñon llamada "deleteTarea", el cual elimina la tarea que coincida con el ID, actualizará el localStorage
 export const deleteTarea=(id)=>{
- 
+    try {
+        if(!id || typeof id !== "string") throw new Error("Error, el id debe ser un string válido");
+        
+        const tareas = getTareas();
+        const tareasActualizadas = tareas.filter(tarea => tarea.id !== id);
+        
+        if(tareas.length === tareasActualizadas.length) {
+            console.warn(`Advertencia: No se encontró tarea con id ${id}`);
+            return;
+        }
+        
+        saveTareas(tareasActualizadas);
+        console.info(`Tarea con id ${id} eliminada correctamente ✅`);
+    } catch(error) {
+        throw new Error("Error eliminando la tarea ⛔");
+    }
+
+}
+//Crear una función llamada "completarTarea", se le pasa como parámetro un id, la función debe buscar la tarea por el ID y poner a true su campo "completada"
+export const completarTarea=(id)=>{
+    try{
+        if (!id || typeof id !== "string"){ throw new Error ("Error, el id debe ser un string válido")}
+
+        const tareas = getTareas();
+        const tarea = tareas.find(tarea => tarea.id === id);
+        if (!tarea){
+            console.warn(`Advertencia: No se encontró tarea con id ${id}`);
+            return;
+        }
+
+        tarea.completada = true;
+        saveTareas(tareas);
+        console.info(`Tarea con id ${id} completada correctamente ✅`);
+    }catch(error){
+        throw new Error("Error  al completar la tarea ⛔");
+    }
+
+}
+//Crear una función llamada "descompletarTarea", se le pasa como se le pasa como parámetro un id, la función debe buscar la tarea por el ID y poner a false su campo "completada"
+export const descompletarTarea=(id)=>{
+    try {
+        if (!id || typeof id !== "string"){ throw new Error ("Error, el id debe ser un string válido")}
+
+        const tareas = getTareas();
+        const tarea = tareas.find(tarea => tarea.id === id);
+        if (!tarea){
+            console.warn(`Advertencia: No se encontró tarea con id ${id}`);
+            return;
+        }
+
+        tarea.completada = false;
+        saveTareas(tareas);
+        console.info(`Tarea con id ${id} completada correctamente ✅`);
+    }catch(error){
+        throw new Error("Error al descompletar la tarea ⛔");
+    }
+  
+}
+
+//Crear una función llamada "buscarCompletadas", el cual devuelve una array de las tareas que estén completas
+export const buscarCompletadas=()=>{
+    try{
+
+    const tareas = getTareas();
+    return tareas.filter(tarea => tarea.completada === true);
+
+    }catch(error){
+        throw new Error("Error al buscar las tareas completadas ⛔");
+    }
+
+}
+
+//Crear una función llamada "buscarNoCompletadas", el cual devuelve una array de las tareas que NO estén completas
+export const buscarnOCompletadas=()=>{
+    try{
+
+    const tareas = getTareas();
+    return tareas.filter(tarea => tarea.completada === false);
+
+    }catch(error){
+        throw new Error("Error al buscar las tareas NO  completadas ⛔");
+    }
+}
+
+//Crear una función llamada "buscarPorNombre", la cual recibe por parámtro el nombre de la tarea, el cual devolverá un array con las tareas cuyo nombre contenga el texto buscado.
+export const buscarPorNombre=(nombre)=>{
+    try{
+        if(!nombre || typeof nombre !== "string") throw new Error("Error, el nombre debe ser un string válido");
+        const tareas = getTareas();
+        const formatoCorrectoNombre = nombre.trim().toLowerCase();
+        return tareas.filter(tarea => tarea.nombre.toLowerCase().includes(formatoCorrectoNombre));
+        
+    }catch(error){
+        throw new Error("Error al buscar las tareas por nombre ⛔");
+    }
+}
+
+//Crear una función llamada "borrarTodasLasTareas", está eliminará todas las tareas del localStorage.
+export const borrarTodasLasTareas=()=>{
+    try {
+        localStorage.removeItem(TEXT_KEY);
+        console.info("Todas las tareas eliminadas correctamente ✅");
+    } catch (error) {
+        throw new Error ("Error al eliminar todas las tareas")
+    }
 }
