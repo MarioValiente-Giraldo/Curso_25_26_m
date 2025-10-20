@@ -1,0 +1,13 @@
+{
+  "name": "relacionejerciciosrepaso",
+  "version": "1.0.0",
+  "main": "data.js",
+  "type": "module",
+  "scripts": {
+    "test": " node ejerciciosExamen/ejercicio2.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
