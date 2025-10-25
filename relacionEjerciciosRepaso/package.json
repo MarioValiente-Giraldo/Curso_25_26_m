@@ -4,7 +4,7 @@
   "main": "data.js",
   "type": "module",
   "scripts": {
-    "test": " node ejerciciosExamen/ejercicio3.js"
+    "test": " node ejerciciosExamen/ejercicio1.js"
   },
   "keywords": [],
   "author": "",
