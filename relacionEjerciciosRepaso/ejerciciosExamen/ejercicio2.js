@@ -65,14 +65,29 @@ function ordenarPrecio(direcion='asc'){
     const productos = analizarProdutosPorcategoría();
     if(direccion.trim().toLowerCase()==='asc'){
         return Object.entries(productos)
-        .sort((a,b)=>a[1].stockMedio-b[1].stockMedio)
+        .sort((a,b)=>a[1].precioMedio-b[1].precioMedio)
         .map(([categoría,datos])=>({categoría,...datos}));
     }else{
         return Object.entries(productos)
-        .sort((a,b)=>b[1].stockMedio-a[1].stockMedio)
+        .sort((a,b)=>b[1].precioMedio-a[1].precioMedio)
         .map(([categoría,datos])=>({categoría,...datos}));
     }
 }
+function filtrarStockProblema(){
+    const productos = analizarProdutosPorcategoría();
+    return Object.entries(productos)
+    .filter(([categoría,datos])=>datos.stockMedio<10)
+    .map(([categoría,datos])=>({categoría,...datos}));
+
+}
+
+function filtrarValoracionProblema(){
+    const productos = analizarProdutosPorcategoría();
+    return Object.entries(productos)
+    .filter(([categorías,datos])=>datos.valoracionMedia<4)
+    .map(([categoría,datos])=>({categoría,...datos}));
+    
+};
 
 
 
