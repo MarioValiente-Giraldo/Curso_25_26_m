@@ -30,7 +30,7 @@ export function persistenciaUsuario(){
         try {
             localStorage.getItem(id);
         } catch (error) {
-             throw new Error("No se ha podido obtener el usuario");
+            throw new Error("No se ha podido obtener el usuario");
         }
     }
 
@@ -38,7 +38,7 @@ export function persistenciaUsuario(){
         try {
             localStorage.setItem(id,JSON.stringify(datos));
         } catch (error) {
-             throw new Error("No se ha podido actualizar el usuario");
+            throw new Error("No se ha podido actualizar el usuario");
         }
     }
 
@@ -46,7 +46,7 @@ export function persistenciaUsuario(){
         try {
             localStorage.removeItem(id);
         } catch (error) {
-             throw new Error("No se ha podido eliminar el usuario");
+            throw new Error("No se ha podido eliminar el usuario");
         }
     }
 
@@ -57,7 +57,7 @@ export function persistenciaUsuario(){
                 usuarios.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
             }
         }catch(error){
-             throw new Error("No se ha podido listar los usuarios");
+            throw new Error("No se ha podido listar los usuarios");
         }
     }
 
@@ -101,3 +101,5 @@ export function persistenciaUsuario(){
     }
 
 }
+
+

@@ -21,7 +21,6 @@ function compararColecciones(){
     const union = new Set([...coloresPrimarios, ...coloresSecundarios]);
     const intersección = new Set([...coloresPrimarios].filter(color=>coloresSecundarios.has(color)));
     const diferencia = new Set([...coloresPrimarios].filter(color=>!coloresSecundarios.has(color)));
-    const mapCiudadesPobladas = new Map();
     const ciudadesGrandes = new Map([...ciudadesPoblacion].filter(([ciudad,poblacion])=>poblacion>1000000));
 
     ;
